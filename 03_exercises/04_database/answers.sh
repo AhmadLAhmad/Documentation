@@ -7,4 +7,14 @@
 6- update students set Points=500 where ID=2
 7- update students set points=100 where ID=1
 
+*Creating Table*
+10- INSERT INTO graduates (ID,name, Age, Gender,Points)
+    SELECT 	ID,name,Age, Gender,Points
+    FROM students
+    WHERE ID=4
 
+11- UPDATE graduates
+    SET Graduation ='08/09/2018'
+    WHERE ID = 4
+
+12- DELETE FROM students WHERE ID=4
