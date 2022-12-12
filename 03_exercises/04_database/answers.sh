@@ -18,3 +18,22 @@
     WHERE ID = 4
 
 12- DELETE FROM students WHERE ID=4
+
+*Joins*
+DB:Cars-Dealership
+
+14- select employees.name,companies.name,companies.date 
+from employees INNER JOIN companies
+ON employees.ID=companies.ID
+
+15- select employees.name
+from employees INNER JOIN companies
+ON employees.ID=companies.ID
+AND companies.date < 2000
+
+16- select companies.name
+from employees INNER JOIN companies
+ON employees.ID=companies.ID
+AND	employees.Role= 'Graphic Designer'
+
+
