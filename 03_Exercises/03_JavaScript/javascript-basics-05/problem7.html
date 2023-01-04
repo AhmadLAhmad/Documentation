@@ -7,19 +7,22 @@
     <title>Document</title>
   </head>
   <body>
-    <div id="demo"></div>
+    <p id="demo"></p>
     <script>
-      for (var counter = 0; counter <= 30; counter++) {
-        var notPrime = false;
-        for (var i = 2; i <= counter; i++) {
-          if (counter % i === 0 && i !== counter) {
-            notPrime = true;
+      function count() {
+        for (var counter = 0; counter <= 30; counter++) {
+          var notPrime = false;
+          for (var i = 2; i <= counter; i++) {
+            if (counter % i === 0 && i !== counter) {
+              notPrime = true;
+            }
+          }
+          if (notPrime === false) {
+            alert(counter);
           }
         }
-        if (notPrime === false) {
-          console.log(counter);
-        }
       }
+      count();
     </script>
   </body>
 </html>
