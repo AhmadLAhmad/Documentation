@@ -7,13 +7,21 @@
     <title>Document</title>
   </head>
   <body>
-    
-    
-    
-    
-    
-    
-    
-    <script></script>
+    <form onsubmit="input(event)">
+      <label for="name">Your name : </label
+      ><input type="text" name="name" value="" id="name" />
+    </form>
+
+    <div id="demo"></div>
+
+    <script>
+      function input(event) {
+        event.preventDefault();
+        var x = document.getElementById("name").value;
+        if (x == "Alice" || x == "Bob")
+          document.getElementById("demo").innerHTML = "Hello " + x;
+        else document.getElementById("demo").innerHTML = "Hello stranger";
+      }
+    </script>
   </body>
 </html>
