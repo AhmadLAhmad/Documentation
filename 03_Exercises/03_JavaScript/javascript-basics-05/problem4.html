@@ -7,16 +7,27 @@
     <title>Document</title>
   </head>
   <body>
-    <script>
-      var x = prompt("Please enter a number", "Any Number 1-17");
-      var y =prompt("Please enter a number", "Any Number 1-17");
+    <input type="number" id="val" />
+    <input type="Submit" onclick="run();" />
 
-      if (!isNaN(x,y)) {
-        if (x % 5 == 0 || x % 3 == 0) {
-          alert(x);
-        } else {
-          alert("Not a multiple");
+    <p id="results"></p>
+
+    <script>
+      function numberSum(N) {
+        var total = 0;
+
+        for (var i = 1; i <= N; i++) {
+          if (i % 3 == 0 || i % 5 == 0) {
+            total = total + i;
+          }
         }
+
+        return total;
+      }
+
+      function run() {
+        val = document.getElementById("val").value;
+        document.getElementById("results").innerHTML = numberSum(val);
       }
     </script>
   </body>

@@ -7,14 +7,16 @@
     <title>Document</title>
   </head>
   <body>
-    <input id="val" />
+    <input type="number" id="val" />
     <input type="Submit" onclick="run();" />
+
     <p id="results"></p>
+
     <script>
       function numberSum(N) {
         var total = 0;
         for (var i = 1; i <= N; i++) {
-          total += i;
+          total = total + i;
         }
         return total;
       }
