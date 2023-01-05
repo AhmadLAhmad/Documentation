@@ -71,6 +71,10 @@ function hello(){
 }
 
 
+/**
+ * Telling the user of all the possible commands
+ */
+
 function help(){
   console.log('update\n','delete\n','add\n','exit\n')
 }
