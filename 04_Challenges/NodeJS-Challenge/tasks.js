@@ -9,12 +9,13 @@
  * @param  {string} name the name of the app
  * @returns {void}
  */
-function startApp(name){
+function startApp(name)
+{
   process.stdin.resume();
   process.stdin.setEncoding('utf8');
   process.stdin.on('data', onDataReceived);
   console.log(`Welcome to ${name}'s application!`)
-  console.log("--------------------")
+  console.log("Hello")
 }
 
 
@@ -33,7 +34,8 @@ function startApp(name){
  * @param  {string} text data typed by the user
  * @returns {void}
  */
-function onDataReceived(text) {
+function onDataReceived(text)
+ {
   if (text === 'quit\n') {
     quit();
   }
@@ -63,7 +65,8 @@ function unknownCommand(c){
  *
  * @returns {void}
  */
-function hello(){
+function hello()
+{
   console.log('hello!')
 }
 
@@ -79,4 +82,4 @@ function quit(){
 }
 
 // The following line starts the application
-startApp("Jad Sarout")
+startApp("ahmad")
