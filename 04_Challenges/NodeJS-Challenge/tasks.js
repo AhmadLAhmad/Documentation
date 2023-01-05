@@ -37,6 +37,9 @@ function onDataReceived(text) {
   if (text === 'quit\n' || text === 'exit\n') {
     quit();
   }
+  else if(text === 'help\n'){
+    help();
+  }
   else if(text === 'hello\n'){
     hello();
   }
@@ -67,6 +70,10 @@ function hello(){
   console.log('hello!')
 }
 
+
+function help(){
+  console.log('update\n','delete\n','add\n','exit\n')
+}
 
 /**
  * Exits the application
