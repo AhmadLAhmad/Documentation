@@ -43,7 +43,7 @@ function onDataReceived(text) {
   else if(text === 'help\n'){
     help();
   }
-  else if(text === 'hello\n' || /Hello [A-Za-z]/.test(text))
+  else if(text === 'hello\n' || text === 'Hello\n' || /hello [A-Za-z]/.test(text))
   {
     hello(text);
   }
