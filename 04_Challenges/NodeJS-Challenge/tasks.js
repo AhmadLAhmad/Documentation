@@ -40,10 +40,10 @@ function onDataReceived(text) {
   if (text === 'quit\n' || text === 'exit\n') {
     quit();
   }
-  else if(text === 'help\n'){
+  else if(text === 'help\n' || 'Help\n' || /help [A-Za-z]/){
     help();
   }
-  else if(text === 'hello\n' || text === 'Hello\n' || /hello [A-Za-z]/.test(text))
+  else if(text === 'hello\n' || 'Hello\n' || /hello [A-Za-z]/.test(text))
   {
     hello(text);
   }
@@ -83,7 +83,8 @@ function hello(str)
  */
 
 function help(){
-  console.log('update\n','delete\n','add\n','exit\n')
+  
+  console.log('\n update\n','delete\n','add\n','exit\n')
 }
 
 /**
