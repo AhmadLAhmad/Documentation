@@ -1,4 +1,4 @@
-const fs = require('fs');
+const fs = require('fs');                               //still 3ndk done function 
 
 const args = process.argv;
 
@@ -131,6 +131,82 @@ const deleteFunction = () => {
   }
 };
 
+//done function
+const doneFunction = () => {
+      
+    const doneIndex = args[3];
+      
+    if (doneIndex) {
+          
+        
+        let data = [];
+          
+        
+        let dateobj = new Date();
+          
+        
+        let dateString = dateobj.toISOString()
+                    .substring(0, 10);
+          
+        
+        const fileData = fs
+            .readFileSync(currentWorkingDirectory
+                + 'todo.txt').toString();
+          
+        
+        const doneData = fs
+            .readFileSync(currentWorkingDirectory
+                + 'done.txt').toString();
+          
+        
+        data = fileData.split('\n');
+        
+        
+        let filterData = data.filter(function(value) {
+            return value !== '';
+        });
+          
+        
+        if (doneIndex > filterData.length || doneIndex <= 0) {
+            console.log('Error: todo #' + doneIndex 
+                    + ' does not exist.');
+              
+        } else {
+            
+            const deleted = filterData.splice(
+                filterData.length - doneIndex, 1);
+              
+            
+            const newData = filterData.join('\n');
+              
+            
+            fs.writeFile(
+                currentWorkingDirectory + 'todo.txt',
+                newData,
+                  
+                function(err) {
+                    if (err) throw err;
+                },
+            );
+            fs.writeFile(
+  
+                currentWorkingDirectory + 'done.txt',
+                'x ' + dateString + ' ' + deleted 
+                                + '\n' + doneData,
+                function(err) {
+                    if (err) throw err;
+                    console.log('Marked todo #' 
+                        + doneIndex + ' as done.');
+                },
+            );
+        }
+    } else {
+        
+        console.log('Error: Missing NUMBER for '
+                +  'marking todo as done.');
+    }
+};
+
 
 
 
@@ -157,7 +233,12 @@ switch (args[2]) {
             deleteFunction();
             break;
         }
-
+    case 'done':
+            {   
+            doneFunction();
+            break;
+            }
+      
     default:
         {
             HelpFunction();
