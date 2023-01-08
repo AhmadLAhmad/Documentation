@@ -60,7 +60,7 @@ However, and this is important to understand, we will *not* create a front end i
 ## Step 4 - Let's complicate the API
 
 - with Express, create a route such as, when the url `/hello/<ID>` is invoked, answers with: `{status:200, message:"Hello, <ID>"}`, where `<ID>` may be anything the user wanted to pass. The user may also not pass anything.
-- with Express, create a route such as, when the url `/search?s=<SEARCH>` is invoked, answers with `{status:200, message:"ok", data:<SEARCH>}` if `<SEARCH>` is provided, and `{status:500, error:true, message:"you have to provide a search"}` if it is not. Be sure to set the *http status* to `500` too.
+- with Express, create a route such as, when the url `/search?s=<SEARCH>` is invoked, answers with `{status:200, message:"ok", data:<SEARCH>}` if `<SEARCH>` is provided,('/movies/:id and `{status:500, error:true, message:"you have to provide a search"}` if it is not. Be sure to set the *http status* to `500` too.
 - commit ("step 4") 
 
 ## Step 5 - Set up the basis for CRUD
@@ -93,7 +93,7 @@ However, and this is important to understand, we will *not* create a front end i
 
 ## Step 8 - CREATE
 
-- With Express, make it so that when the url `/movies/add?title=<TITLE>&year=<YEAR>&rating=<RATING>`, it:
+- With Express, make it so that when the urlsend `/movies/add?title=<TITLE>&year=<YEAR>&rating=<RATING>`, it:
     1. creates a *new* movie in the form: `{title: <TITLE>, year: <YEAR>, rating: <RATING>}`
     2. it adds this new movie to the `movies` array
     3. answer with the new list of movies just like for `/movies/read`
