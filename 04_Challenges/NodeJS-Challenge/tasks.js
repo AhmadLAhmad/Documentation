@@ -1,3 +1,9 @@
+const fs = require('fs');
+
+const args = process.argv;
+
+const currentWorkingDirectory = args[1].slice(0, -8);
+
 
 /**
  * Starts the application
@@ -17,6 +23,18 @@ function startApp(name){
   console.log("--------------------")
 }
 
+const InfoFunction = () => {
+  const help = `
+Usage :-
+$ node index.js add "todo item"  # Add a new todo
+$ node index.js ls               # Show remaining todos
+$ node index.js del NUMBER       # Delete a todo
+$ node index.js done NUMBER      # Complete a todo
+$ node index.js help             # Show usage
+$ node index.js report           # Statistics`;
+
+  console.log(help);
+};
 
 /**
  * Decides what to do depending on the data that was received
@@ -40,10 +58,11 @@ function onDataReceived(text) {
   if (text === 'quit\n' || text === 'exit\n') {
     quit();
   }
-  else if(text === 'help\n' || 'Help\n' || /help [A-Za-z]/){
-    help();
+  else if(text === 'help\n' )
+  {
+    InfoFunction();
   }
-  else if(text === 'hello\n' || 'Hello\n' || /hello [A-Za-z]/.test(text))
+  else if(text === 'hello\n' || (/hello [A-Za-z]/.test(text)))
   {
     hello(text);
   }
