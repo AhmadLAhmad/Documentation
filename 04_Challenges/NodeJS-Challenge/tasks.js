@@ -4,6 +4,7 @@ const args = process.argv;
 
 const currentWorkingDirectory = args[1].slice(0, -8);
 
+/* function to display possible commands */
 
 const HelpFunction = () => {
     const help = `
@@ -17,11 +18,51 @@ $ node tasks.js help             # Show possible commands`
     console.log(help);
 };
 
+/* 
+*
+*
+function to add a new todo*/
+
+const addFunction = () => {
+  
+  const newTask = args[3];
+
+  if (newTask) 
+  {
+      let data = [];
+
+      const fileData = fs
+          .readFileSync(currentWorkingDirectory +'todo.txt').toString();
+
+      fs.writeFile(currentWorkingDirectory + 'todo.txt',newTask + '\n' + fileData,
+
+          function(err) {
+
+              if (err) throw err;
+
+              console.log('Added todo: "' + newTask + '"');
+          },
+      );
+  } 
+  else 
+  {
+    console.log('Error: Missing todo string.' + ' Nothing added!');
+  }
+};
+
+
+
 
 switch (args[2]) {
   case 'help':
         {
             HelpFunction();
+            break;
+        }
+        
+  case 'add':
+        {
+            addFunction();
             break;
         }
 
