@@ -76,6 +76,61 @@ const listFunction = () => {
 };
 
 
+/* delete function*/
+
+const deleteFunction = () => {
+  
+  const deleteIndex = args[3];
+
+  if (deleteIndex) 
+  {
+      let data = [];
+
+      const fileData = fs
+          .readFileSync(currentWorkingDirectory +
+              'todo.txt').toString();
+
+      data = fileData.split('\n');
+      let filterData = data.filter(function(value) 
+      {
+        return value !== '';
+      });
+
+      
+      if (deleteIndex > filterData.length || deleteIndex <= 0) {
+          console.log(
+              'Error: todo #' + deleteIndex +
+              ' does not exist. Nothing deleted.',
+          );
+
+      } 
+      else 
+      {
+      
+          filterData.splice(filterData.length - deleteIndex, 1);
+            
+          const newData = filterData.join('\n');
+            
+          fs.writeFile(
+              currentWorkingDirectory + 'todo.txt',
+              newData, 
+              function(err) {
+                  if (err) throw err;
+
+                  console.log('Deleted todo #' + deleteIndex);
+              },
+          );
+      }
+  } 
+
+  else 
+
+  {
+
+      console.log('Error: Missing NUMBER for deleting todo.');
+  }
+};
+
 
 
 
@@ -96,6 +151,12 @@ switch (args[2]) {
             listFunction();
             break;
           }
+
+  case 'del':
+        {
+            deleteFunction();
+            break;
+        }
 
     default:
         {
