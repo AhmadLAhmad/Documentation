@@ -23,18 +23,6 @@ function startApp(name){
   console.log("--------------------")
 }
 
-const InfoFunction = () => {
-  const help = `
-Usage :-
-$ node index.js add "todo item"  # Add a new todo
-$ node index.js ls               # Show remaining todos
-$ node index.js del NUMBER       # Delete a todo
-$ node index.js done NUMBER      # Complete a todo
-$ node index.js help             # Show usage
-$ node index.js report           # Statistics`;
-
-  console.log(help);
-};
 
 /**
  * Decides what to do depending on the data that was received
@@ -55,22 +43,43 @@ $ node index.js report           # Statistics`;
 
 function onDataReceived(text) {
   
-  if (text === 'quit\n' || text === 'exit\n') {
+  if (text === 'quit\n' || text === 'exit\n') 
+  {
     quit();
   }
+
   else if(text === 'help\n' )
   {
-    InfoFunction();
+    HelpFunction();
   }
+  
   else if(text === 'hello\n' || (/hello [A-Za-z]/.test(text)))
   {
     hello(text);
   }
-  else{
+
+  else
+  {
     unknownCommand(text);
   }
 
 }
+/**
+ * HelpFunction displays all possible commands to use in this application
+ */
+const HelpFunction = () => {
+  const help = `
+Usage :-
+$ node index.js add "todo item"  # Add a new todo
+$ node index.js ls               # Show remaining todos
+$ node index.js del NUMBER       # Delete a todo
+$ node index.js done NUMBER      # Complete a todo
+$ node index.js help             # Show usage
+$ node index.js report           # Statistics`;
+
+  console.log(help);
+};
+
 
 
 /**
@@ -101,10 +110,7 @@ function hello(str)
  * 
  */
 
-function help(){
-  
-  console.log('\n update\n','delete\n','add\n','exit\n')
-}
+
 
 /**
  * Exits the application
