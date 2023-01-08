@@ -69,13 +69,13 @@ function onDataReceived(text) {
  */
 const HelpFunction = () => {
   const help = `
-Usage :-
-$ node index.js add "todo item"  # Add a new todo
-$ node index.js ls               # Show remaining todos
-$ node index.js del NUMBER       # Delete a todo
-$ node index.js done NUMBER      # Complete a todo
-$ node index.js help             # Show usage
-$ node index.js report           # Statistics`;
+
+add "todo item"  # Add a new todo
+ls               # Show remaining todos
+del NUMBER       # Delete a todo
+done NUMBER      # Complete a todo
+help             # Show possible commands
+report           # Show Statistics\n`;
 
   console.log(help);
 };
