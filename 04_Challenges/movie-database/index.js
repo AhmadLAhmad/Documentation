@@ -20,7 +20,6 @@ app.get('/hello/:id',(req, res) => {
   });
 
 
-
 app.use('/movies', require('./src/movie/movie.route'))
 app.use('*', (req, res) => { res.send('API doesnot exist , go away!') })
 

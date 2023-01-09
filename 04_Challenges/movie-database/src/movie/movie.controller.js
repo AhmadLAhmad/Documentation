@@ -39,8 +39,9 @@ exports.getMovie = async(req, res) => {
 exports.listMovies = async(req, res) => {
     try {
         return res.status(200).send(movies)
-    } catch(error)
-    {
+    } 
+    catch(error)
+    { return re
         return res.json({ error: error.message })
     }
 }
@@ -90,12 +91,27 @@ exports.listMoviesByTitle = async(req, res) => {
 //     }
 // }
 
-// exports.deleteMovie = async(req, res) => {
-//     const id = req.params.id
-//     try {
-//         await model.deleteOne({ _id: id })
-//         return res.status(200).json({ success: true })
-//     } catch(error){
-//         return res.json({ error: error.message })
-//     }
-// }
+exports.deleteMovie = async(req, res) => {
+    
+    const n = req.params.id
+    try {
+        
+        if(n <= movies.length)
+    {
+        movies.splice(n - 1, 1 )
+        res.json({ status: 200 , message: movies})
+    
+    }
+        
+    
+
+    if(!n) 
+    return res.status(404).json({status:404, error:true, message:`the movie ${n} does not exist`})
+   
+    
+    }
+     catch(error){
+        return res.json({ error: error.message })
+    }
+}
+
