@@ -114,6 +114,7 @@ However, and this is important to understand, we will *not* create a front end i
 ## Step 10 - UPDATE
 
 - With Express, make it so that when the url `/movies/update/<ID>?title=<NEW_TITLE>`, the movie designed by `<ID>` gets it's title changed to `<NEW_TITLE>`. Return the modified array of movies.
+- 
 - With Express, make it so that when the url `/movies/update/<ID>?title=<NEW_TITLE>&rating=<NEW_RATING>`, the movie designed by `<ID>` gets its rating changed to `<NEW_RATING>`, and its title to `<NEW_TITLE>`. If a user provides any of `title`, `rating`, or `year`, the movie should change to reflect those modifications. Fields that the user did *not* provide should not change. In the example here, the `year` of the movie should *not* change, as the user only provided `title` and `rating`.
 - commit ("step 10") 
 

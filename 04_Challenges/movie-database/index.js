@@ -1,8 +1,8 @@
 const express = require('express') //import
 const app = express() //initialize
 const port = 2297;
-const database = require('./src/config/database.config')
-// database()
+const database = require('./src/config/database.config.js')
+database()
 app.use(express.json()) // to make the rquest body readable (jason file)
 
 app.get('/test', (req, res) => { return res.status(200).json({ message: "ok" }) })
@@ -24,6 +24,6 @@ app.use('/movies', require('./src/movie/movie.route'))
 app.use('*', (req, res) => { res.send('API doesnot exist , go away!') })
 
 // function listening on this port 
-app.listen(port, () => { console.log(`OK ${port}`) })
+app.listen(port, () => { console.log(`working on port: ${port}`) })
 
 

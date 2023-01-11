@@ -41,7 +41,7 @@ exports.listMovies = async(req, res) => {
         return res.status(200).send(movies)
     } 
     catch(error)
-    { return re
+    { 
         return res.json({ error: error.message })
     }
 }
@@ -73,30 +73,62 @@ exports.listMoviesByTitle = async(req, res) => {
         return res.json({ error: error.message })
     }
 }
+
 // exports.updateMovie = async(req, res) => {
 //     const id = req.params.id
 //     try {
-//         await model.updateOne(
+//         await movies.updateOne(
 //             { _id: id }, 
 //             { 
 //                 $set: {
-//                     title: req.body.title,
-//                     description: req.body.description,
-//                     updatedDate: Date.now()
+//                     title: req.query.title,
+//                     year: req.query.year,
+//                     rating: req.query.rating,
+                    
 //                 }
 //             }
 //         )
-//     } catch(error){
+//         res,json({status: 200 , message:`${id} updated`})
+//     } 
+//     catch(error){
 //         return res.json({ error: error.message })
 //     }
 // }
+
+exports.updateMovie = async(req, res) => {
+    
+    const id = parseInt(req.params.id)
+    
+    try {
+        
+        const movie = movies.find((item) => 
+        item.id === id);
+        if(!movie) return res.status(404).json({status:404, error:true, message:`the movie ${id} does not exist`});
+
+    
+
+        movie.title= req.query.title;
+        movie.year= req.query.year;
+        movie.rating= req.query.rating;
+        
+     
+        return res.status(200).json({status:200 , message: movies})
+        
+    } 
+    catch(error){
+        return res.json({ error: error.message })
+    }
+}
+
+
+
 
 exports.deleteMovie = async(req, res) => {
     
     const n = req.params.id
     try {
         
-        if(n <= movies.length)
+        if (n <= movies.length)
     {
         movies.splice(n - 1, 1 )
         res.json({ status: 200 , message: movies})
@@ -105,9 +137,10 @@ exports.deleteMovie = async(req, res) => {
         
     
 
-    if(!n) 
+    else 
+    {
     return res.status(404).json({status:404, error:true, message:`the movie ${n} does not exist`})
-   
+    }
     
     }
      catch(error){

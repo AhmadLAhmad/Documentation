@@ -1,12 +1,13 @@
-// const mongoose = require('mongoose')
+const mongoose = require('mongoose')
 
-// const database = async(req, res) => {
-//     try {
-//         await mongoose.connect('mongodb://127.0.0.1:27017/demo')
-//         console.log('connected to database')
-//     } catch(error) {
-//         console.log('error', error)
-//     }
-// }
+const database = async(req, res) => {
+    try {
+        console.log("here")
+        await mongoose.connect('mongodb+srv://ahmad:monacool123@cluster0.knujx0o.mongodb.net/?retryWrites=true&w=majority')
+            // .then('connected to database')
+        } catch(error) {
+            console.log('error', error)
+        }
+    }
 
-// module.exports = database
+    module.exports = database
